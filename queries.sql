@@ -27,3 +27,10 @@ SELECT [Order].id as OrderId, Customer.CompanyName as CustomerCompanyName, Emplo
 FROM [Order]
 JOIN Customer ON [Order].CustomerId = Customer.Id
 JOIN Employee ON [Order].EmployeeId = Employee.Id;
+
+-- Alternate way of writing
+
+SELECT [Order].Id, [Customer].CompanyName, [Employee].LastName
+FROM [Order]
+JOIN [Customer], [Employee]
+WHERE [Order].CustomerId = [Customer].Id AND [Order].EmployeeId = [Employee].Id
