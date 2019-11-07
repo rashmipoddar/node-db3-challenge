@@ -35,8 +35,7 @@ const add = scheme => {
     })
 }
 
-const update = (id, changes) => {
-  console.log('----', changes, '------');
+const update = (changes, id) => {
   return db('schemes')
     .where({id})
     .update(changes)
@@ -44,6 +43,8 @@ const update = (id, changes) => {
       console.log(count);
       if (count !== 0) {
         return findById(id);
+      } else {
+        return null;
       }
     })
 }
