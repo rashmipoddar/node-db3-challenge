@@ -19,6 +19,7 @@ router.get('/:id', (req, res) => {
 
   Schemes.findById(id)
   .then(scheme => {
+    console.log(scheme);
     if (scheme) {
       res.json(scheme);
     } else {
