@@ -19,6 +19,7 @@ router.get('/:id', (req, res) => {
 
   Schemes.findById(id)
   .then(scheme => {
+    console.log(scheme);
     if (scheme) {
       res.json(scheme);
     } else {
@@ -103,6 +104,7 @@ router.delete('/:id', (req, res) => {
 
   Schemes.remove(id)
   .then(deleted => {
+    // console.log(deleted);
     if (deleted) {
       res.json({ removed: deleted });
     } else {
