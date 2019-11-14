@@ -50,9 +50,8 @@ const update = (changes, id) => {
 }
 
 const remove = (id) => {
-  findById(id)
+  return findById(id)
     .then(scheme => {
-      console.log('=====', scheme, '=====');
       if (scheme) {
         return db('schemes')
           .where({id})
@@ -61,16 +60,26 @@ const remove = (id) => {
             return scheme;
           })
       } else {
-        return 'The scheme with the given id does not exist';
+        return null;
       }
     })
     .catch(error => {
       return 'The scheme could not be deleted';
     })
-    // return db('schemes')
-    // .where({id})
-    // .del()
 }
+
+// function remove(id) {
+//   return findById(id).then(scheme =>
+//     scheme
+//       ? db
+//           .select('*')
+//           .from('schemes')
+//           .where('id', '=', id)
+//           .del()
+//           .then(deleted => scheme)
+//       : null
+//   );
+// }
 
 module.exports = {
   find,
